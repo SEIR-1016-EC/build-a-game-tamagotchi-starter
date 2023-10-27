@@ -53,7 +53,32 @@ function init() {
 
 function runGame() {
     console.log("game is running")
+    updateStats()
+    render()
 }
 function render() {
     console.log("render game")
+    renderstats()
 }
+function renderstats() {
+    boredomStatEl.textContent = state.boredom
+    hungerStatEl.textContent = state.hunger
+    sleepyStatEl.textContent = state.sleepiness
+
+    //icebox xonsider iterator for the dymanice reder of content
+}
+
+function updateStat(stat, value) {
+    console.log("Stats updated")
+}
+
+function updateStats() {
+    for (key in state) {
+        //console.log(key)
+        let randomAmount = Math.floor(Math.random() * 3)
+        let currentValue  = state[key]
+        state[key] = currentValue + randomAmount
+        console.log(key, state[key], randomAmount)
+    }
+}
+

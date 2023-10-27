@@ -1,4 +1,3 @@
-console.log('js:loaded')
 
 //use for of loops for iterating in arrays 
 //use for in loops for iterating in objects
@@ -30,13 +29,17 @@ let interval; //count of cycles
 
 /*----- cached elements  -----*/
 
-const boredomStatEl = document.querySelector('#boredom-stat')
-const hungerStatEl = document.querySelector('#hunger-stat')
-const sleepyStatEl = document.querySelector('#sleepiness-stat')
+const boredomStatEl = document.querySelector('#boredom-stat'); 
+const hungerStatEl = document.querySelector('#hunger-stat');
+const sleepyStatEl = document.querySelector('#sleepiness-stat');
+
+//In game messages
+
+const gameMessageEl = document.querySelector('#tama-message')
 
 //TODO: add ache for game message string once added to game
-
 const gameBtnEls = document.querySelectorAll('#controller button')
+const gamePlayAgainEl = document.querySelector('#restart');
 
 //TODO: add cache for restart btton after game over
 
@@ -45,19 +48,21 @@ const gameBtnEls = document.querySelectorAll('#controller button')
 
 gameBtnEls.forEach(function (btn){
     btn.addEventListener('click', handleBtnClick)
-})
+});
+
+gamePlayAgainEl.addEventListener('click', init)
+
 //icebox -after a click remove th lisener and then add it back 2 seconds later
 //throttle the user and rpevent spammming
 
 function handleBtnClick(event){
     console.log(event.target.innerText)
 
-    const convertProp = {
-        feed: 'hunger', 
-        sleep: 'sleepiness', 
-        play: 'boredom'
-    }
-
+        const convertProp = {
+            feed: 'hunger', 
+            sleep: 'sleepiness', 
+            play: 'boredom'
+        }
     const key = convertProp[event.target.innerText]
 
     updateStat(key, -3);
@@ -65,9 +70,11 @@ function handleBtnClick(event){
 }
 
 
+
+
 /*----- functions -----*/
 
-init() //starts game
+init(); //starts game
 //init will start the game and load the initial value for our game state
 //init() on load and after a reset (optional)
 //it will also call render() -> dom updates
@@ -78,6 +85,9 @@ render()
 
 
 function init(){
+
+    resetUI();
+
     age = 0;
     cycles = 0;
 
@@ -156,7 +166,7 @@ function continueGame(){
         }
     }
 
-    console.log(keepRunning, 'should I keep going?')
+    console.log(currentStats);
     return keepRunning;
 
 }
@@ -164,12 +174,24 @@ function continueGame(){
 
 
 function gameOver(){
-    console.log('game over!');
+
     //the way to get ethe game to end is to stop the initialising
     //ie stop the timer from runnig 
 
     clearInterval(timer); 
     //stop the interval calling runGame when gameOver is called
+
+    gamePlayAgainEl.classList.remove('hidden');
+    gameMessageEl.classList.remove('hidden');
+
+
+}
+
+function resetUI(){
+    //hides reset buttons, and losing message
+   
+    gamePlayAgainEl.classList.add('hidden'); 
+    gameMessageEl.classList.add('hidden');
 }
 
 

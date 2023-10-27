@@ -1,7 +1,7 @@
 /* global styles  */
 *{
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 /* element styles */
 body{
@@ -17,7 +17,7 @@ h1{
     margin: 0;
 }
 .container{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     width: 90vw;
     margin: 0 auto;
 

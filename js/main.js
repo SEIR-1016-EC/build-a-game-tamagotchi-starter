@@ -6,9 +6,9 @@ console.log("js:loaded");
 // image assets paths
 
 const INIT_STATE = {
-  boredom: 6,
-  hunger: 6,
-  sleepiness: 6,
+  boredom: 0,
+  hunger: 0,
+  sleepiness: 0,
 };
 
 /*----- state variables -----*/
@@ -138,7 +138,7 @@ function continueGame() {
     currentStats.push(state[key]);
   }
   // current state represented as an array
-  //   console.log(currentStats);
+     console.log(currentStats);
 
   // check if any of the values are greater than 9
   for (let stat of currentStats) {
@@ -152,6 +152,7 @@ function continueGame() {
 function gameOver() {
   // testing with alert
   clearInterval(timer);
+  console.log("Game Over")
   // stop the interval calling runGame when gameOver is called ( the global timer variable stores an id associated with the interval)
 }
 

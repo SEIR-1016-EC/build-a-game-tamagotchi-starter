@@ -150,6 +150,7 @@ function continueGame(){
 }
 
 function gameOver(){
+    
     clearInterval(timer);
     // stop the interval calling runGame when 
     // gameOver is called ( the global timer variable 

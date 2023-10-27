@@ -44,7 +44,7 @@ function handleBtnClick(event) {
 }
 
 /*----- functions -----*/
-// init();
+init();
 function init() {
   state = { ...INIT_STATE };
   age = 0;
@@ -57,14 +57,12 @@ function init() {
 }
 
 function runGame() {
-  if (continueGame) {
+  if (continueGame()) {
     updateStats();
   } else {
     gameOver();
   }
   // console.log("game is running");
-  continueGame();
-  updateStats();
   render();
 }
 
@@ -110,6 +108,6 @@ function continueGame() {
   return keepRunning;
 }
 function gameOver() {
-  alert("GAME OVER");
+//   alert("GAME OVER");
   clearInterval(timer)
 }

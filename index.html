@@ -10,7 +10,30 @@
 </head>
 
 <body>
-        <h1>Tamagotchi Code Along</h1>
+    <header>
+        <h1 class="game-title">Tamagotchi</h1>
+    </header>
+    <main class="container">
+        <section id="controller" class="button-wrapper">
+            <!-- button wrapper -->
+            <!-- make button casing lowercase cause it's easy to manipulate casing in CSS -->
+            <button>feed</button>
+            <button>play</button>
+            <button>sleep</button>
+        </section>
+        
+        <section id="stat-display" class="stats-wrapper">
+            <!-- stats display -->
+            <p>happiness: <span id="boredom-stat">...</span></p>
+            <p>hunger: <span id="hunger-stat">...</span></p>
+            <p>tiredness: <span id="sleepiness-stat">...</span></p>
+        </section>
+
+        <section id="game-state" class="game-state-wrapper">
+            <!-- game state -> UI for seeing changes to game -->
+            <img id="tama-graphic" src="./imgs/wolf-1.png" class="game-graphic">
+        </section>
+    </main>
 </body>
 
 </html>

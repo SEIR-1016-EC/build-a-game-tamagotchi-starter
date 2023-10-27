@@ -1,0 +1,25 @@
+
+
+
+1. Review
+- highlightted setup steps
+
+-reviewed game state
+
+-analyzing function -> read the rules of the game 
+
+
+2.HTML + CSS
+- HTML strucvture providing class naems or IDs
+-outisde in CSS for layout and styling 
+-class hanes are going to be descriptive + layout / appearance
+-outside in css for layout and styling
+
+  /* auto calculates the remaining spce available, whats left over after calculating content size
+    this includes padding, margin, border */
+
+3. JS review + pseudocode 
+
+4.variables 
+
+5. DOM

@@ -1,11 +1,80 @@
 /* global styles  */
-
+* {
+  box-sizing: border-box;
+}
 /* element styles */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: rgb(212, 165, 243);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+h1 {
+  font-size: 3.5rem;
+  margin: 0;
+}
 
 /* layout */
 
+.container {
+  /* border: 3px solid blue;*/
+  width: 90%;
+  margin: 0 auto;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.stats-wrapper {
+
+}
+.game-state-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 /* headings */
+.header-title {
+    text-align: center;
+
+}
 
 /* buttons */
 
+.button-wrapper button {
+  color: white;
+  background-color: rgb(136, 29, 237);
+  padding: 1.3rem;
+  font-size: 1.8rem;
+  border: .2rem solid rgb(87, 6, 154);
+  border-radius: .25rem;
+}
+
 /* images */
+
+#tama-graphic {
+   max-height: 32vh;
+}
+
+#tama-graphic:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+

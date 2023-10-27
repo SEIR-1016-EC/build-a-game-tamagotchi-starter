@@ -1,11 +1,62 @@
 /* global styles  */
-
+*{
+    box-sizing: border-box;
+   
+}
 /* element styles */
-
+body{
+    /*fonts*/
+    margin: 0;
+    min-height: 100vh;
+    background-color: #e6e6e6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+h1{
+    font-size: 3.5rem;
+    /*margin: 0;*/
+}
 /* layout */
+.container{
+    width: 90vw;
+    margin: 0 auto;
+}
+.button-wrapper{
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+
+}
+.stats-wrapper{
+
+}
+
+.game-state-wrapper{
+    display: flex;
+    justify-self: center;
+
+}
 
 /* headings */
+.game-title{
+    text-align: center;
+}
 
 /* buttons */
+.button-wrapper button{
+    background-color: #0b99ff;
+    color: white;
+    padding: 1.3rem 1.6rem;
+    font-size: 1.8rem;
+    border: 2px solid #134a71;
+    border-radius: 0.25rem;
+
+
+}
 
 /* images */
+.game-graphics{
+    max-height: 20vmin;
+}
+
+

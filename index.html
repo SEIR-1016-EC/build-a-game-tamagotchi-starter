@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script src="./js/main.js" defer></script>
-</head>
+  </head>
 
-<body>
-        <h1>Tamagotchi Code Along</h1>
+  <body>
+    <header>
+        <h1 class="game-title">Tamagotchi</h1>
+    </header>
+    <main class="container">
+        <section id="controller" class="button-wrapper">
+            <!-- button wrapper -->
+            <button>feed</button>
+            <button>play</button>
+            <button>sleep</button>
+        </section>
+        <section id="stat-display" class="stats-wrapper">
+            <!-- stats display -->
+            <p>Happiness: <span id="boredom-stat">10</span></p>
+            <p>Hunger: <span id="hunger-stat">0</span></p>
+            <p>Tiredness: <span id="sleepiness-stat">5</span></p>
+        </section>
+        <section id="game-state" class="game-state-wrapper">
+            <!-- game state -> UI -> user interface for seeing changes to game -->
+            <img id="tama-graphic" src="./imgs/wolf-1.png" class="game-graphic">
+        </section>
+    </main>
+  </body>
+</html>
+
 </body>
 
 </html>

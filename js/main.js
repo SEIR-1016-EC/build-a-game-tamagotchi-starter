@@ -10,6 +10,7 @@ let boredom;
 let hunger;
 let sleepiness;
 
+let state;
 //ice box features
 let age;
 let cycles;
@@ -25,6 +26,12 @@ const hungerStatEl = document.querySelector('#hunger-stat')
 const sleepyStatEl = document.querySelector('#sleepiness-stat')
 
 const gameBtnEl = document.querySelectorAll('#controller button')
+
+const INIT_STATE = {
+    boredom: 0,
+    hunger: 0,
+    sleepiness: 0
+}
 /*----- event listeners -----*/
 
 
@@ -32,5 +39,21 @@ const gameBtnEl = document.querySelectorAll('#controller button')
 init() //stats the game
 
 function init() {
+
+    state = {...INIT_STATE}
+    age = 0
+    cycles = 0
+    interval = 5000 //in ms time passing for each cycle
+    timer = setInterval(runGame, interval)
+
+    render()
     console.log("Game started")
+}
+
+
+function runGame() {
+    console.log("game is running")
+}
+function render() {
+    console.log("render game")
 }

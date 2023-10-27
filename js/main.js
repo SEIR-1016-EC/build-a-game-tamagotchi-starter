@@ -2,63 +2,136 @@ console.log('js:loaded')
 
 
 const INIT_STATE = {
-    boredom: 0,
-    hunger: 0,
-    sleepiness: 0,
-  };
+    boredom: 6, 
+    hunger: 4, 
+    sleepiness: 9,
+}
 
-/*----- constants -----*/
-let boredom; // integer
-let hunger; // integer
-let sleepiness; // integer 
+/*----- state variables -----*/
+// state is the data that will change while the game is running
+
+// let boredom; // integer
+// let hunger; // integer
+// let sleepiness; // integer
+
+let state;
 
 let age;
 let cycles; 
 
-// HFM later on - icebox features (age cycles for tama)
-let timer; // setInterval id
-let interval;
-
-/*----- state variables -----*/
-
+let timer; 
+let interval; 
 
 /*----- cached elements  -----*/
- const boredomStatEl = document.querySelector('#boredom-stat')
- const hungerStatEl = document.querySelector('#hunger-stat')
- const sleepyStatEl = document.querySelector('#sleepiness-stat')
 
-// To Do: add cache for game message string once added to game
- const gameBtnElms = document.querySelectorAll('#controller button')
- // To Do: add cache for restart button after game over
+const boredomStatEl = document.querySelector('#boredom-stat')
+const hungerStatEl = document.querySelector('#hunger-stat')
+const sleepyStatEl = document.querySelector('#sleepiness-stat')
+
+// TODO: add cache for game message string once added to game
+
+const gameBtnEls = document.querySelectorAll('#controller button')
+
+// TODO: add cache for restart button after game over
 
 /*----- event listeners -----*/
+
+gameBtnEls.forEach(function(btn){
+    btn.addEventListener('click', handleBtnClick)
+})
+
+function handleBtnClick(event){
+    console.log(event.target.innerText)
+
+    const convertProp = {
+        feed: "hunger",
+        sleep: "sleepiness",
+        play: "boredom",
+    }
+
+    const key = convertProp(event.target.innerText)
+    console.log(key)
+
+    updateStat(key, -3)
+    render()
+}
 
 
 /*----- functions -----*/
 
-function init() {
-    // clear the end-game message
-
-    // overwrite the old state with a copy of the original state values
-    state = { ...INIT_STATE };
-   // - assigning the new object to the state variable, creating a 'refresh of the state'
-
-    age = 0; // integer
-    cycles = 0; // integer
+init() // starts game when js loads
+function init(){
   
-    interval = 1000; // integer
-    timer = setInterval(runGame, interval); // object
+    state = {...INIT_STATE} 
+    
+    age = 0;
+    cycles = 0; 
+
+    interval = 5000; 
+    timer = setInterval(runGame, interval); 
+    render()
+}
+
+function runGame(){
+    updateStats()
+    render()
+}
+
+function render(){
+    renderStats()
+}
+
+function renderStats(){
+    // console.log('rendering stats')
+    boredomStatEl.textContent= state.boredom
+    hungerStatEl.textContent= state.hunger
+    sleepyStatEl.textContent= state.sleepiness
+    
+}
+
+function runGame() {
+    cycles++;
+    
+  
+    if (continueGame()) {
+      updateStats();
+  
+    } else {
+      return gameOver();
+    }
   
     render();
   }
-
-  function runGame(){
-    console.log('game is running"')
-
-}
-
-   function render() {
-        renderStats();
-    console.log('game has ended')
-      }
- 
+  
+  function continueGame() {
+    const testGame = Object.values(state).every((stat) => stat < 10);
+    return testGame;
+  }
+  
+  function updateStats() {
+    for (key in state) {
+      updateStat(key, Math.floor(Math.random() * 3));
+    }
+  }
+  
+  function updateStat(stat, value) {
+    if (state[stat] + value >= 0) {
+      state[stat] += value;
+    } else {
+      state[stat] = 0;
+    }
+  }
+  
+  function gameOver() {
+   console.log('game over!')
+   clearInterval(timer)
+   init()
+  }
+  
+  function resetUI() {
+    gamePlayAgainEl.classList.add("hidden");
+    gameMessageEl.classList.add("hidden");
+  }
+  
+  init();
+  

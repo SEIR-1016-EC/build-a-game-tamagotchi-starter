@@ -46,7 +46,7 @@ function handleBtnClick(e) {
   };
   
   // capture the button text and map it to the state property
-  const btnText = convertProp[e.target.innerText];
+  const btnText = convertProp[event.target.innerText];
   
   // calculate a random value between 0 -> 3 and convert it to a negative number
   const newValue = -1 * (3 + Math.floor(Math.random() * 3));

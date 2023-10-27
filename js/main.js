@@ -13,9 +13,9 @@ let boredom; //integer
 let hunger; // integer
 let sleepiness; // integer
 
-let state;
-let age;
-let cycles;
+let state; // object
+let age; // integer
+let cycles; // integer
 
 let timer; //setInterval id
 let interval; //count of cycles
@@ -26,12 +26,30 @@ const boredomStatEl = document.querySelector("#boredom-stat");
 const hungerStatEl = document.querySelector("#hunger-stat");
 const sleepyStatEl = document.querySelector("#sleepiness-stat");
 
-// TODO: add cashe for game message string once added to game
+// TODO: add cache for game message string once added to game
 
-const gameBtnEls = document.querySelector("#controller button");
+const gameBtnEls = document.querySelectorAll("#controller button");
 
 /*----- event listeners -----*/
+gameBtnEls.forEach(function (btn) {
+    btn.addEventListener('click', handleBtnClick);
+})
 
+function handleBtnClick(e) {
+    console.log(e.target.innerText);
+
+    const convertProp = {
+        feed: 'hunger',
+        sleep: 'sleepiness',
+        play: 'boredom',
+};
+const key = convertProp[e.target.innerText]
+console.log(key)
+
+updateStat(key, -3)
+
+render();
+}
 /*----- functions -----*/
 
 init(); // starts game when JS loads
@@ -48,7 +66,11 @@ function init() {
 }
 
 function runGame() {
-  updateStates();
+    if(continueGame()){
+  updateStats();
+} else {
+    gameOver();
+}
   //    console.log("Game is running")
   render();
 }
@@ -61,7 +83,7 @@ function render() {
 function renderStats() {
   //    console.log('rendering stats')
   boredomStatEl.textContent = state.boredom;
-  hungerStatEl.textConect = state.hunger;
+  hungerStatEl.textContent = state.hunger;
   sleepyStatEl.textContent = state.sleepiness;
 }
 
@@ -70,7 +92,7 @@ function updateStats() {
   // iterate over states {}
   // capture random number
   // update current etc
-  for (key in state) {
+  for (let key in state) {
     updateStat(key, Math.floor(Math.random() * 3));
   }
 }
@@ -82,3 +104,31 @@ function updateStat(stat, value) {
     state[stat] = 0;
   }
 }
+
+function continueGame(){
+    let keepRunning = true
+    let currentStats = []
+
+    for(let key in state){
+        currentStats.push(state[key]);
+    }
+
+    for (let stat of currentStats) {
+        if (stat >= 10) {
+            keepRunning = false;
+        }
+    }
+    return keepRunning;
+}
+
+function gameOver() {
+    clearInterval(timer);
+}
+    // console.log(currentStats)
+    //     if(stat >=10){
+    //         keepRunning = false
+    //     }
+    
+    console.log('should I keep running the game?')
+
+

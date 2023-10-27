@@ -36,6 +36,22 @@
 5. DOM capture
     - tested all DOM cached variables - DONE
 6. Init 
+    - setting init values for global variables - DONE
+    - refactor state from global variable to object - DONE
+    - started interval - DONE
+    - stubbed several functions
+        runGame
+        render()
 7. Render
+    - renderStats() - DONE
+    - added icebox note about scaling render - DONE
+
 8. Game loop
+        - increment the state stats (helper function) 
+            - called by runGame (game play loop) - DONE
+            - updateStats -> updates each state key with a random amt - DONE
+        - check if one or more state values exceeds a threshold 
+            -continueGame() -> checks all state values -> if any of the values exceed threshold -> return false otherwise true - DONE
+         - in runGame -check if we should continue if continueGame () -> true -> updateStats()   
+        - else trigger a game over (alert -> clearInterval(timer))
 9. Lots of refinement...

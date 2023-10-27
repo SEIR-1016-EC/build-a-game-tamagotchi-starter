@@ -1,4 +1,4 @@
-console.log('js:loaded')
+// Tamagotchi Code Along //
 
 
 const INIT_STATE = {
@@ -6,13 +6,6 @@ const INIT_STATE = {
     hunger: 4, 
     sleepiness: 9,
 }
-
-/*----- state variables -----*/
-// state is the data that will change while the game is running
-
-// let boredom; // integer
-// let hunger; // integer
-// let sleepiness; // integer
 
 let state;
 
@@ -22,19 +15,13 @@ let cycles;
 let timer; 
 let interval; 
 
-/*----- cached elements  -----*/
 
 const boredomStatEl = document.querySelector('#boredom-stat')
 const hungerStatEl = document.querySelector('#hunger-stat')
 const sleepyStatEl = document.querySelector('#sleepiness-stat')
 
-// TODO: add cache for game message string once added to game
-
 const gameBtnEls = document.querySelectorAll('#controller button')
 
-// TODO: add cache for restart button after game over
-
-/*----- event listeners -----*/
 
 gameBtnEls.forEach(function(btn){
     btn.addEventListener('click', handleBtnClick)
@@ -57,9 +44,8 @@ function handleBtnClick(event){
 }
 
 
-/*----- functions -----*/
 
-init() // starts game when js loads
+init()
 function init(){
   
     state = {...INIT_STATE} 
@@ -82,7 +68,6 @@ function render(){
 }
 
 function renderStats(){
-    // console.log('rendering stats')
     boredomStatEl.textContent= state.boredom
     hungerStatEl.textContent= state.hunger
     sleepyStatEl.textContent= state.sleepiness
@@ -127,11 +112,5 @@ function runGame() {
    clearInterval(timer)
    init()
   }
-  
-  function resetUI() {
-    gamePlayAgainEl.classList.add("hidden");
-    gameMessageEl.classList.add("hidden");
-  }
-  
-  init();
+ 
   

@@ -41,32 +41,31 @@ gameBtnEls.forEach(function (btn) {
     });
 
 
-function handleBtnClick(event){
+function handleBtnClick(event) {
     console.log(event.target.innerText);
 
     const convertProp = {
-        feed: 'hunger',
-        sleep: 'sleepiness',
-        play: 'boredom',    
+        feed: "hunger",
+        sleep: "sleepiness",
+        play: "boredom",    
     };
     
-    const key =
-    convertProp[event.target.innerText];
+    const key = convertProp[event.target.innerText];
     console.log(key);
     
     updateStat(key, -3);
     
-    render()
+    render();
 }
 
 /*----- functions -----*/
 
-Init() //starts game when js loads
+Init(); //starts game when js loads
 
-function Init(){
+function Init() {
       // init will start the game and load the initial values for our game state
 
-    state = {...INIT_STATE}
+    state = {...INIT_STATE};
       // taking th init state object -> copy of its content and storing into a new object
      // assigning the new object to the state variable
 
@@ -74,9 +73,9 @@ function Init(){
     cycles= 0;
 
     interval = 5000; // mss pass for each cycle
-    timer = setInterval(runGame, interval) // set interval id
+    timer = setInterval(runGame, interval); // set interval id
     
-    //*TODO / ICEBOX - init() on load and after a
+    // / ICEBOX - init() on load and after a
     // reset (optional)*//
     // it will also call render() -> dom updates 
     //(trigger all render helper function -> updating stats)
@@ -84,8 +83,8 @@ function Init(){
     render();
 }
 
-function runGame(){
-    if(continueGame()){
+function runGame() {
+    if (continueGame()) {
         updateStats();
     } else {
         gameOver();
@@ -95,19 +94,19 @@ function runGame(){
     render();
 }
 
-    function render(){
+    function render() {
       // any features which might update the dom 
       //(the ui) -> will be called by render
         renderStats();
 }
     
-    function renderStats(){
+    function renderStats() {
         boredomStatEl.textContent = state.boredom;
         hungerStatEl.textContent = state.hunger;
         sleepyStatEl.textContent = state.sleepiness;
 }
     
-    function updateStats(){
+    function updateStats() {
          // call iterator over state and for each state
         //property update the corresponding key
         // iterate over states {}
@@ -115,14 +114,14 @@ function runGame(){
         // capture property of state
         // update current state for each key
         for (let key in state) {
-            updateStat(key, Math.floor(Math.random()*3));
+            updateStat(key, Math.floor(Math.random() * 3));
     }   
 }
 
-    function updateStat(stat, value){
+    function updateStat(stat, value) {
     // error bounding to help prevent a stat below zero
     
-    if(state[stat] + value >= 0){
+    if(state[stat] + value >= 0) {
         state[stat] += value;
     } else {
         state[stat] = 0;
@@ -157,9 +156,7 @@ function gameOver(){
     //stores an id associated with the interval)
 }
 
-
-
-
+// old code
 /**
  * 0ld code
 */

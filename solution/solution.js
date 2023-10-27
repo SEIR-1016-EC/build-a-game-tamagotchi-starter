@@ -12,18 +12,14 @@ const INIT_STATE = {
 
 /*----- state variables -----*/
 let state;
-
-let age; // integer
-let cycles; // integer
-
-let timer; // object
-let interval; // integer
+let age;
+let cycles; 
+let timer;
+let interval;
 
 /*----- cached elements  -----*/
 
-const boredomStatEl = document.querySelector("#boredom-stat");
-const hungerStatEl = document.querySelector("#hunger-stat");
-const sleepyStatEl = document.querySelector("#sleepiness-stat");
+ç
 
 const gameMessageEl = document.querySelector("#tama-message");
 

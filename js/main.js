@@ -40,21 +40,25 @@ const gameBtnEls = document.querySelectorAll("#controller button");
 // TODO: add cache for restart button after game over
 
 /*----- event listeners -----*/
-gameBtnEls.forEach(function(btn){
-    btn.addEventListener('click', handleBtnClick)
-})
+gameBtnEls.forEach(function (btn) {
+  btn.addEventListener("click", handleBtnClick);
+});
 
-function handleBtnClick(event){
-    console.log(event.target.innerText)
+function handleBtnClick(event) {
+  console.log(event.target.innerText);
 
-    const convertProp = {
-        feed: 'hunger',
-        sleep: 'sleepiness',
-        play: 'boredom'
-        }
+  const convertProp = {
+    feed: "hunger",
+    sleep: "sleepiness",
+    play: "boredom",
+  };
 
-        const key = convertProp[event.target.innerText]
-        console.log(key)
+  const key = convertProp[event.target.innerText];
+  console.log(key);
+
+  updateStat(key, -3);
+
+  render();
 }
 
 /*----- functions -----*/
@@ -78,30 +82,20 @@ function init() {
   // it will also call render() for dom updates (trigger all render helper function -> updating stats)
   render();
 
-  function runGame() {
-    if (continueGame()){
-        updateStats()
-    } else {
-        gameOver()
-    }
-    render()
-  }
-
   // init() on load and after a reset (optional)
 }
 
 function runGame() {
-  // gmae loop function all of the logic for the game will change state here -> func() -> state
-  continueGame();
-  //   console.log("game is running");
-  updateStats();
+  if (continueGame()) {
+    updateStats();
+  } else {
+    gameOver();
+  }
+  // game loop function all of the logic for the game will change state here -> func() -> state
   render();
 }
 
 function render() {
-  // any features which might update the dom (the UI) -> will be called by render()
-  //   console.log("rendering game");
-
   renderStats();
 }
 
@@ -118,7 +112,7 @@ function renderStats() {
 function updateStats() {
   // call iterator over state and for each state property, update the corresponding key
   // -> iterating over the state object keys (for/in -> objects, for/of -> arrays)
-  for (key in state) {
+  for (let key in state) {
     // // capture random number
     // let randomAmount = Math.floor(Math.random() * 3);
     // // capture
@@ -142,28 +136,29 @@ function updateStat(stat, value) {
 }
 
 function continueGame() {
-    // key piece that tells us should we keep going, or end the game?
-    let keepRunning = true;
+  // key piece that tells us should we keep going, or end the game?
+  let keepRunning = true;
   let currentStats = [];
   // check all properties at state
   for (let key in state) {
     currentStats.push(state[key]);
   }
-  console.log(currentStats)
+console.log(currentStats);
 
-  for (let stat of currentStats){
-    if(stat >= 10) {
-        keepRunning = false
+// check if any of the values are greater than 9
+  for (let stat of currentStats) {
+    if (stat >= 10) {
+      keepRunning = false;
     }
   }
 
-  console.log(keepRunning, 'should I keep going?')
+  return keepRunning; // either true or false
+}
   // evaluate if any of those are values < 10
 
   // if any > 10 -> call gameOver()
-}
 
 function gameOver() {
-  console.log("Game over!");
-  clearInterval(timer) // stop the interval calling runGame when gameOver is called
+console.log("Game over!");
+  clearInterval(timer); // stop the interval calling runGame when gameOver is called
 }

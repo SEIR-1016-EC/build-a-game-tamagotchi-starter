@@ -4,13 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tamagotchi</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="./js/main.js" defer></script>
 </head>
 
 <body>
-        <h1>Tamagotchi Code Along</h1>
+    <header>
+        <h1 class="game-title">Tamagotchi</h1>
+    </header>
+
+    <main class= "container">
+        <section id="controller" class="button-wrapper">
+            <button>feed</button>
+            <button>play</button>
+            <button>sleep</button>
+        </section>
+
+        <section id="stat-display" class="stat-wrapper">
+            <p>Happiness: <span id="boredom-stat">...</span></p>
+            <p>Hunger: <span id="hunger-stat">...</span></p>
+            <p>Tiredness: <span id="sleepiness-stat">...</span></p>
+        </section>
+
+        <section id="game-state" class="game-state-wrapper">
+            <img id="tama-graphic" src="/imgs/wolf-1.png"  class="game-graphic" alt="wolf">
+        </section>
+    </main>
 </body>
 
 </html>

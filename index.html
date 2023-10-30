@@ -9,8 +9,28 @@
     <script src="./js/main.js" defer></script>
 </head>
 
-<body>
-        <h1>Tamagotchi Code Along</h1>
+<body> 
+    <header> 
+        <h1 class="game-title">Tamagotchi</h1> 
+        <main class="container"> 
+            <section id="controller" class="button wrapper">
+                <!---button wrapper-->
+                <button>feed</button>
+                <button>play</button> 
+                <button>sleep</button>
+            </section>
+            <section>
+                <!--starts display-->
+                <p>Happiness:<span id="boredom-stat">10</span></p>
+                <p>Hunger:<span id="hunger-stat">0</span></p>
+                <p>Tiredness <span id="sleepiness-stat">5</span></p>
+            </section> 
+            <section id="game-state">
+                <img id="tama-graphic" src="./imgs/wolf-1.png" class="game-graphic"
+            </section>
+        </main> 
+    </header>
+        
 </body>
 
 </html>

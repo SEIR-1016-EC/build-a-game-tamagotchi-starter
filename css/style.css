@@ -1,11 +1,61 @@
 /* global styles  */
-
+*{
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 255, 191);
+}
 /* element styles */
+body{ 
+    margin:0;
+min-height: 100vh;
+background-color: honeydew;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 16px;
+} 
 
-/* layout */
+h1{
+font-size: 3.5rem;
+}
+/* layout */ 
+.container{
+border: 3px springgreen
+width: 90%;
+margin: 0 auto;
+}
 
+.button-wrapper{ 
+    display: flex;
+    justify-content: center;
+gap: 1rem;
+} 
+
+.stats-wrapper{
+
+}
+
+.game-state-wrapper{
+display: flex;
+justify-content: center;
+}
 /* headings */
-
+.game-title{
+text-align: center;
+}
 /* buttons */
-
-/* images */
+<!-- button wrapper -->
+<button>feed</button>
+<button>play</button>
+<button>sleep</button>
+</section>
+<section id="stat-display" class="stats-wrapper">
+<!-- stats display -->
+<p>Happiness: <span id="boredom-stat">10</span></p>
+<p>Hunger: <span id="hunger-stat">0</span></p>
+<p>Tiredness: <span id="sleepiness-stat">5</span></p>
+</section>
+<section id="game-state" class="game-state-wrapper">
+<!-- game state -> UI -> user interface for seeing changes to game -->
+<img id="tama-graphic" src="./imgs/wolf-1.png" class="game-graphic">
+</section>
+</main>
+</body>
+</html>
